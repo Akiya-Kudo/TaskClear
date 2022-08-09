@@ -1,12 +1,18 @@
 @extends('layout.layout')
+
 @section('title','ログインフォーム')
+
+@section('stylesheet')
+<link href="{{ asset('css/signin.css') }}" rel="stylesheet">
+@endsection
+
 @section('content')
 <body class='text-center container bg-dark bg-opacity-10'>
 
     {{-- ヘッダー --}}
     <div class='pt-5'><a href="{{ route('login.show') }}" class='link-dark text-decoration-none'>
         <img class='' src="{{ asset('img/mailbox2.svg') }}" alt="#" width='102' height='87'>
-        <h1 class='pt-3'>Yaruki Clear</h1></a>
+        <h1 class='pt-3'>DeKi Router</h1></a>
     </div>
 
     {{-- エラー表示 --}}
@@ -40,7 +46,7 @@
             </div>
 
             <div class='pt-3'>
-                <input class='btn btn-lg btn-success w-100' type='submit' value='Log in'></input>
+                <button type="submit" class="btn btn-outline-success w-100 btn-lg" >Log in</button>
                 <h5 class='pt-5'>{{ \Carbon\Carbon::today()->format("y/m/d") }}</h5>
             </div>
 

@@ -10,10 +10,7 @@
     <!-- CSS only -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <!-- Custom styles for this template -->
-    {{-- <link href="{{ asset(' css/signin.css') }}" rel="stylesheet"> --}}
-    <style type="text/css">
-    form {min-width: 300px;}
-    </style>
+    @yield('stylesheet')
 </head>
 @yield('content')
 </html>
