@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +19,16 @@ use App\Http\Controllers\Auth\AuthController;
 //     return view('welcome');
 // });
 
-Route::get('/', [AuthController::class, 'showLogin'])->name('showLogin');
+Route::group(['middleware' => ['guest']], function () {
+    // ログイン画面表示
+    Route::get('/', [AuthController::class, 'showLogin'])->name('login.show');
+    // ログイン機能
+    Route::post('/login', [AuthController::class, 'login'])->name('login');
+});
 
-Route::post('login', [AuthController::class, 'login'])->name('login');
+Route::group(['middleware' => ['auth']], function () {
+    //ホーム画面表示
+    Route::get('/home', [HomeController::class, 'home'])->name('home');
+    // ログアウト
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+});

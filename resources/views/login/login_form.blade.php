@@ -1,28 +1,15 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>ログインフォーム</title>
-    {{-- scripts  --}}
-    <script src="{{ asset('js/app.js') }}" defer></script>  {{-- assetはpublic配下 そのファイルのパス--}}
-    <!-- CSS only -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    {{-- <link href="{{ asset(' css/signin.css') }}" rel="stylesheet"> --}}
-    <style type="text/css">
-    form {min-width: 300px;}
-    </style>
-
-    
-
-</head>
+@extends('layout.layout')
+@section('title','ログインフォーム')
+@section('content')
 <body class='text-center container bg-dark bg-opacity-10'>
-    <div class='pt-5'><a href="{{ route('showLogin') }}" class='link-dark text-decoration-none'>
+
+    {{-- ヘッダー --}}
+    <div class='pt-5'><a href="{{ route('login.show') }}" class='link-dark text-decoration-none'>
         <img class='' src="{{ asset('img/mailbox2.svg') }}" alt="#" width='102' height='87'>
         <h1 class='pt-3'>Yaruki Clear</h1></a>
     </div>
+
+    {{-- エラー表示 --}}
     @if ($errors->any())
     <div class='alert alert-danger'>
         <ul>
@@ -32,6 +19,11 @@
         </ul>
     </div>
     @endif
+
+    {{-- ログアウトセッションメッセージ --}}
+    <x-alert type='success' :session="session('logout_success')"/>
+
+    {{-- 入力フォーム --}}
     <main class='form-signin'>
         <form class='pt-3 w-25 container ' action="{{ route('login') }}" method='POST'>
             @csrf
@@ -55,4 +47,4 @@
         </form>
 </main>
 </body>
-</html>
+@endsection
