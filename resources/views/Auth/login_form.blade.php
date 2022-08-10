@@ -9,7 +9,7 @@
 @section('content')
 <body class='text-center container bg-dark bg-opacity-10'>
 
-    {{-- ヘッダー --}}
+    {{-- ロゴ --}}
     <div class='pt-5'><a href="{{ route('login.show') }}" class='link-dark text-decoration-none'>
         <img class='' src="{{ asset('img/mailbox2.svg') }}" alt="#" width='102' height='87'>
         <h1 class='pt-3'>DeKi Router</h1></a>
@@ -37,17 +37,18 @@
 
             <div class='form-floating'>
                 <input class='form-control' id='floatingInput' type="email" placeholder='メールアドレスを記入して下さい' name='email' required autofocus>
-                <label for="floatingInput">メールアドレス</label>
+                <label class='text-black-50' for="floatingInput">メールアドレス</label>
             </div>
 
             <div class='form-floating'>
                 <input class='form-control' id='floatingPassword' type="password" placeholder='パスワードを記入して下さい' name='password' required>
-                <label for="floatingPassword">パスワード</label>
+                <label class='text-black-50' for="floatingPassword">パスワード</label>
             </div>
 
             <div class='pt-3'>
                 <button type="submit" class="btn btn-outline-success w-100 btn-lg" >Log in</button>
-                <h5 class='pt-5'>{{ \Carbon\Carbon::today()->format("y/m/d") }}</h5>
+                <p class='pt-3'><a href="{{ route('register.show') }}" class='link-success'>新規登録する</a></p>
+                <h5 class='pt-3'>{{ \Carbon\Carbon::today()->format("y/m/d") }}</h5>
             </div>
 
         </form>

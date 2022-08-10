@@ -24,6 +24,10 @@ Route::group(['middleware' => ['guest']], function () {
     Route::get('/', [AuthController::class, 'showLogin'])->name('login.show');
     // ログイン機能
     Route::post('/login', [AuthController::class, 'login'])->name('login');
+    //新規登録画面表示
+    Route::get('/register', [AuthController::class, 'showRegister'])->name('register.show');
+    //新規登録
+    Route::post('/register', [AuthController::class, 'register'])->name('register');
 });
 
 Route::group(['middleware' => ['auth']], function () {
