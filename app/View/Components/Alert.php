@@ -17,6 +17,7 @@ class Alert extends Component
      * @var string
      */
     public $session;
+    
     /**
      * コンポーネントインスタンスの作成作成
      * @param string $type, $session

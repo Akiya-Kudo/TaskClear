@@ -1,3 +1,40 @@
 .sidebar {
     width: 150px;
 }
+
+.card {
+    overflow: hidden;
+    background-color: transparent;
+    transition-duration: 0.5s; 
+    
+}
+
+.card:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    width: 100px;
+    height: 100px;
+    background-color: #d1e7d1;
+    border-radius: 50%;
+    z-index: -1;
+    transform: scale(0);
+    transition: .3s;
+  }
+
+.card:hover {
+    transition: .3s;
+    transition-duration: 0.5s; 
+    transform:scale(1.05,1.05);
+    color: white;
+    border-color: white;
+  }
+  
+.card:hover:before {
+    transition: .6s;
+    transform: scale(10);
+  }

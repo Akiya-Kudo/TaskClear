@@ -35,4 +35,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/home', [HomeController::class, 'home'])->name('home');
     // ログアウト
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+    // ゴール詳細画面表示
+    Route::get('/home/{goalid}', [HomeController::class, 'detail'])->name('detail');
 });
