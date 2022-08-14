@@ -7,19 +7,18 @@ use Illuminate\View\Component;
 class Menu extends Component
 {
     // $type
-    public $type;
+    // public $type;
 
-    // $items
-    public $items;
+    // $goals
+    public $goals;
     /**
      * Menubar
      *
      * @return void
      */
-    public function __construct($type, $items)
+    public function __construct($goals)
     {
-        $this->type = $type;
-        $this->items = $items;
+        $this->goals = $goals;
     }
 
     /**

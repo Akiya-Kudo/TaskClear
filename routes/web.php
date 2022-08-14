@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\EditController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,4 +38,18 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     // ゴール詳細画面表示
     Route::get('/home/{goalid}', [HomeController::class, 'detail'])->name('detail');
+
+    // ゴール作成画面表示
+    Route::get('/makegoal', [EditController::class, 'goal'])->name('goal.show');
+    // ゴール追加
+    Route::post('/makegoal', [EditController::class, 'makeGoal'])->name('goal.make');
+    // サブゴール作成画面表示
+    Route::get('/makesubgoal/{goalid}', [EditController::class, 'subgoal'])->name('subgoal.show');
+    // サブゴール追加
+    Route::post('/makesubgoal', [EditController::class, 'makeSubgoal'])->name('subgoal.make');
+
+    // ゴール削除
+    Route::post('/deletegoal', [EditController::class, 'deleteGoal'])->name('goal.delete');
+    // サブゴール削除機能
+    Route::post('/deletesubgoal', [EditController::class, 'deleteSubgoal'])->name('subgoal.delete');
 });

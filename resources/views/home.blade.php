@@ -12,46 +12,52 @@
 
     {{-- トップバー --}}
     {{-- サイドバー --}}
-    <x-menu type='{{ Auth::user()->username }}' :items="$items" />
+    <x-menu :goals="$goals" />
     
 
     {{-- メインコンテンツ --}}
     <div class='container'>
+        {{-- アラートメッセージ --}}
         <x-alert type='success' :session="session('login_success')"/>
-        <div class='d-flex flex-wrap mt-5'>
+        <x-alert type='success' :session="session('success_delete_goal')"/>
 
-            @foreach($items as $item)
-            <div class="card border-success m-3" style="max-width: 25rem;"><a class='link-success text-decoration-none' href="/home/{{$item['id']}}">
-                <div class="card-header bg-transparent border-success">{{ $item['tag'] }}</div>
-                <div class="card-body text-success">
-                    <h5 class="card-title">{{ $item['title'] }}</h5>
-                    <p class="card-text">{{ $item['memo'] }}</p>
-                </div>
-                <div class="card-footer bg-transparent border-success">{{ $item['complete_date'] }} Last:2days</div></a>
+        <h2 class='mt-3 ms-3 text-success'>Your Goals</h2>
+        <hr class="text-success">
+        <div class='d-flex flex-wrap mt-3 justify-content-center'>
+
+            @foreach($goals as $goal)
+            <div class="card hov-func hov-size border-success m-3 bg-light shadow" style="max-width: 25rem;">
+                <a class='link-success text-decoration-none' href="/home/{{$goal['id']}}">
+                    <div class="card-header bg-transparent border-success">{{ $goal['tag'] }}</div>
+                    <div class="card-body text-success">
+                        <h5 class="card-title">{{ $goal['title'] }}</h5>
+                        <p class="card-text" style='margin: 5px;'>{{ $goal['memo'] }}</p>
+                    </div>
+                    <div class="card-footer bg-transparent border-success d-flex justify-content-between">
+                        <div>
+                            {{ $goal['complete_date'] }} Last:2days?? 
+                        </div>
+                        {{-- <object class='d-bottun d-block border border-danger rounded-2 d-flex align-items-center' style="height: 30px; width: 30px;">
+                            <a href="/deletegoal" class='text-center text-decoration-none flex-fill d-url'>×</a>
+                        </object> --}}
+                        <form action="/deletegoal" method='POST'>
+                            @csrf
+                            <input type="hidden" value='{{$goal['id']}}' name='goalid'>
+                            <input type="hidden" value='{{$goal['title']}}' name='title'>
+                            <button type='submit' class="btn btn-outline-danger">×</button>
+                        </form>
+                    </div>
+                </a>
             </div>
             @endforeach
 
-            <div class='card border-success m-3 d-flex align-items-center' style='max-width: 12rem;max-height: 4rem;'>
-                <a href="/home/make" class='link-success text-decoration-none d-flex flex-column'><div class='card-body'>新しい目標を立てる</div></a>
+            <div class='card hov-func hov-size border-success m-3 d-flex align-items-center' style='max-width: 12rem;max-height: 4rem;'>
+                <a href="/makegoal" class='link-success text-decoration-none d-flex flex-column'><div class='card-body'>新しい目標を立てる</div></a>
             </div>
-
         </div>
 
 
-            {{-- <h3>プロフィール</h3>
-            <ul>
-                <li class='h4'>user name : {{ Auth::user()->username }}</li>
-                <li class='h4'>email : {{ Auth::user()->email }}</li>
-            </ul> --}}
-            {{-- <h3> あなたの Goal</h3>
-            <ul>
-                @foreach ($items as $item)
-                <li class='h4'>{{ $item['title'] }}</li>
-                <li class='h4'>{{ $item['memo'] }}</li>
-                <li class='h4'>{{ $item['complete_date'] }}</li>
-                @endforeach
-
-            </ul> --}}
+            {{--{{ Auth::user()->username }}--}}
         </div>
     </div>
 </body>

@@ -1,6 +1,6 @@
     {{-- ログアウトセッションメッセージ --}}
     @if ($session)
-        <div class='alert alert-{{ $type }} mt-5'>
+        <div class='alert alert-{{ $type }} m-3'>
             {{ $session }}
         </div>
     @endif

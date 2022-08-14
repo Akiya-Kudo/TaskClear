@@ -2,14 +2,17 @@
     width: 150px;
 }
 
-.card {
+.hov-func {
     overflow: hidden;
-    background-color: transparent;
     transition-duration: 0.5s; 
     
 }
 
-.card:before {
+.hov-size {
+  transition-duration: 0.5s;
+}
+
+.hov-func:before {
     content: '';
     position: absolute;
     top: 0;
@@ -19,22 +22,46 @@
     margin: auto;
     width: 100px;
     height: 100px;
-    background-color: #d1e7d1;
+    background-color: #91bda3;
     border-radius: 50%;
     z-index: -1;
     transform: scale(0);
     transition: .3s;
   }
 
-.card:hover {
+.hov-size:hover {
     transition: .3s;
     transition-duration: 0.5s; 
     transform:scale(1.05,1.05);
-    color: white;
-    border-color: white;
   }
   
-.card:hover:before {
+.hov-func:hover:before {
     transition: .6s;
     transform: scale(10);
   }
+
+
+@media screen and (min-width:480px) { 
+  /*　画面サイズが480pxからはここを読み込む　*/
+  p {margin: 5px 110px;}
+  .min-m-item {margin: 5px 50px;}
+  .card {min-width: 18rem;}
+}
+@media screen and (max-width:480px) { 
+  /*　画面サイズが480pxまではここを読み込む　*/
+
+  .card {min-width: 15rem;}
+  .form-a {min-width: 15rem;}
+}
+
+.d-url {
+  color: #df3c3c;
+}
+
+.d-bottun:hover {
+  background: #df3c3c;
+}
+
+.d-bottun:hover  .d-url{
+  color: whitesmoke;
+}

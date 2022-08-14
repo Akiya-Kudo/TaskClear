@@ -52,6 +52,6 @@
             </div>
 
         </form>
-</main>
+    </main>
 </body>
 @endsection

@@ -6,9 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
-class Subgoal extends Model
+class Sublist extends Model
 {
     use HasFactory;
+
+    protected $table = 'lists';
 
     /**
      * The attributes that are mass assignable.
@@ -16,13 +18,17 @@ class Subgoal extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'userid',
+        'subgoalid',
+        'list1',
+        'list2',
+        'list3',
+        'list4',
+        'list5',
+        'complete1',
+        'complete2',
+        'complete3',
+        'complete4',
+        'complete5',
         'goalid',
-        'subnumber',
-        'title',
-        'memo',
-        'complete',
-        'complete_date',
     ];
-
 }
