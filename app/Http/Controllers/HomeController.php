@@ -14,14 +14,14 @@ class HomeController extends Controller
     /**
      * @return view
      */
-    public function home ()
+    public function home (Request $request)
     {
         $user = Auth::user()->only('username','id');
         $username = $user['username'];
         $userid = $user['id'];
 
         $goals = Goal::where('userid', $userid)->get();
-        // dd($goals);
+        
         return view('home', compact('goals'));
     }
 

@@ -18,8 +18,7 @@
     {{-- メインコンテンツ --}}
     <div class='container'>
         {{-- アラートメッセージ --}}
-        <x-alert type='success' :session="session('login_success')"/>
-        <x-alert type='success' :session="session('success_delete_goal')"/>
+        <x-alert type='success' :session="session('alert_success')"/>
 
         <h2 class='mt-3 ms-3 text-success'>Your Goals</h2>
         <hr class="text-success">
@@ -40,12 +39,19 @@
                         {{-- <object class='d-bottun d-block border border-danger rounded-2 d-flex align-items-center' style="height: 30px; width: 30px;">
                             <a href="/deletegoal" class='text-center text-decoration-none flex-fill d-url'>×</a>
                         </object> --}}
-                        <form action="/deletegoal" method='POST'>
-                            @csrf
-                            <input type="hidden" value='{{$goal['id']}}' name='goalid'>
-                            <input type="hidden" value='{{$goal['title']}}' name='title'>
-                            <button type='submit' class="btn btn-outline-danger">×</button>
-                        </form>
+                        <div class='d-flex'>
+                            <form action="/editgoal" method='POST' class='mx-2'>
+                                @csrf
+                                <input type="hidden" value='{{ $goal['id'] }}' name='goalid'>
+                                <button type='submit' class="btn btn-outline-primary mx-1">Edit</button>
+                            </form>
+                            <form action="/deletegoal" method='POST'>
+                                @csrf
+                                <input type="hidden" value='{{$goal['id']}}' name='goalid'>
+                                <input type="hidden" value='{{$goal['title']}}' name='title'>
+                                <button type='submit' class="btn btn-outline-danger">×</button>
+                            </form>
+                        </div>
                     </div>
                 </a>
             </div>

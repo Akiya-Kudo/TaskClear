@@ -52,4 +52,13 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/deletegoal', [EditController::class, 'deleteGoal'])->name('goal.delete');
     // サブゴール削除機能
     Route::post('/deletesubgoal', [EditController::class, 'deleteSubgoal'])->name('subgoal.delete');
+
+    // サブゴール編集画面表示
+    Route::post('/editsubgoal', [EditController::class, 'editSubgoal'])->name('subgoal.edit');
+    // サブゴール編集アップロード機能
+    Route::post('/editsubgoal/submit', [EditController::class, 'editSubgoalSubmit'])->name('subgoal.edit.submit');
+    // ゴール編集画面
+    Route::post('editgoal', [EditController::class, 'editGoal'])->name('goal.edit');
+    //ゴール編集機能
+    Route::post('/editgoal/submit', [EditController::class, 'editGoalSubmit'])->name('goal.edit.submit');
 });

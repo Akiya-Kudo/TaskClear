@@ -27,9 +27,7 @@
         </div>
 
         {{-- 作成時のアラートメッセージ --}}
-        <x-alert type='success' :session="session('subgoal_make_success')"/>
-        <x-alert type='success' :session="session('goal_make_success')"/>
-        <x-alert type='success' :session="session('success_delete_sub')"/>
+        <x-alert type='success' :session="session('alert_success')"/>
         
         {{-- サブコンテント --}}
         <div class='subgoal d-flex flex-wrap justify-content-center'>
@@ -48,7 +46,7 @@
                     </div>
                     {{-- リスト --}}
                     <div class='m-2'>
-                        <div class='text-success mx-3'>to do list : <a href="/home" class='text-success mx-2'>Edit List</a></div>
+                        <div class='text-success mx-3'>to do list : </div>
                         <ul class="list-group list-group-flush">
                         {{-- リストが存在する場合のみ --}}
                         @isset($lists[$sub['id']])
@@ -67,6 +65,11 @@
                 <div class="card-footer bg-transparent border-success text-success d-flex justify-content-between">
                     <div class='text-nowrap'>limit : {{ $sub['complete_date'] }}</div>
                     <div class='d-flex'>
+                        <form action="/editsubgoal" method='POST'>
+                            @csrf
+                            <input type="hidden" value='{{ $sub['id'] }}' name='subgoalid'>
+                            <button type='submit' class="btn btn-outline-primary mx-1">Edit</button>
+                        </form>
                         <form action="/deletesubgoal" method='POST'>
                             @csrf
                             <input type="hidden" value='{{ $sub['id'] }}' name='subgoalid'>

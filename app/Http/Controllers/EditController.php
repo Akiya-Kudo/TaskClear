@@ -45,7 +45,7 @@ class EditController extends Controller
             'tag' => $data['tag'],
         ]);
         $goalid = $goal->id;
-        return redirect()->route('detail',$goalid)->with('goal_make_success', 'Goalを新たに作成しました');
+        return redirect()->route('detail',$goalid)->with('alert_success', 'Goalを新たに作成しました');
     }
 
     /**
@@ -105,13 +105,13 @@ class EditController extends Controller
         
         $goalid = $data['goalid'];
 
-        return redirect()->route('detail',$goalid)->with('subgoal_make_success', 'Sub Goalを新たに作成しました');
+        return redirect()->route('detail',$goalid)->with('alert_success', 'Sub Goalを新たに作成しました');
     }
 
     /**
      * サブゴールとそのリストを削除する
-     * @param 
-     * @return 
+     * @param  request
+     * @return route
      */
     public function deleteSubgoal (Request $request) 
     {
@@ -128,9 +128,14 @@ class EditController extends Controller
             $deletelist = Sublist::where('subgoalid', $data['subgoalid'])->delete();
         }
         
-        return redirect()->route('detail',$goalid)->with('success_delete_sub', "title : {$data['title']} を完全に削除しました");
+        return redirect()->route('detail',$goalid)->with('alert_success', "title : {$data['title']} を完全に削除しました");
     }
 
+    /**
+     * ゴールの削除機能
+     * @param request
+     * @return route
+     */
     public function deleteGoal (Request $request) 
     {
         // データ取得
@@ -147,6 +152,113 @@ class EditController extends Controller
             $list = Sublist::where('goalid', $data['goalid'])->delete();
         }
 
-        return redirect()->route('home')->with('success_delete_goal', "title : {$data['title']} を完全に削除しました");
+        return redirect()->route('home')->with('alert_success', "title : {$data['title']} を完全に削除しました");
+    }
+
+    /**
+     * サブゴール編集画面表示
+     * @param request
+     * @return view
+     */
+    public function editSubgoal (Request $request)
+    {
+        // データ取得
+        $data = $request['subgoalid'];  
+        // サブゴール情報取得 
+        $subs = Subgoal::where('id', $data)->get();
+        $sub = $subs['0']; //内包されている配列を取得
+        // リスト情報取得
+        $lists = Sublist::where('subgoalid', $data)->get();
+        $list = $lists['0'];
+
+        
+        // メニューバーに表示するユーザーのゴール一覧を取得
+        // ゴール一覧表示のためのユーザーIDの取得
+        $userid = Auth::user()->only('id');
+        $goals = Goal::where('userid', $userid)->get();
+
+        // タイトル表示ゴール情報の取得
+        $cer_goals = Goal::where('id', $sub['goalid'])->get();
+        $cer_goal = $cer_goals['0']->only('id', 'title', 'complete_date'); //内包されている配列を取得
+
+        return view("Edit.edit_sub", compact('goals','cer_goal', 'sub', 'list'));
+    }
+
+    /**
+     * サブゴール編集機能
+     * @param request
+     * @return route
+     */
+    public function editSubgoalSubmit (Request $request) 
+    {
+        ////////////////////バリデーション実装
+
+        //DB取得
+        $data = $request->only('subgoal', 'memo', 'complete_date', 'list1', 'list2', 'list3', 'list4', 'list5','goalid','subgoalid');
+        
+        //subgoalのsubnumber取得
+        $exist_subs_count = Subgoal::where('goalid', $data['goalid'])->count();
+        $subnumber = $exist_subs_count + 1;
+        //subgoal DB保存
+        $subgoal = Subgoal::where('id', $data['subgoalid'])->update([
+            'userid' => Auth::user()->id,
+            'goalid' => $data['goalid'],
+            'subnumber' => $subnumber,
+            'title' => $data['subgoal'],
+            'memo' => $data['memo'],
+            'complete_date' => $data['complete_date'],
+        ]);
+        
+        // リスト抜けの場合のリスト整列
+        $lists = selfController::adjustList($data);
+        // sublist DB保存 ・・リストがある場合の
+        if (isset($lists['list1'])) {
+            $sublist = Sublist::where('subgoalid', $data['subgoalid'])->update([
+                'list1' => $lists['list1'],
+                'list2' => $lists['list2'],
+                'list3' => $lists['list3'],
+                'list4' => $lists['list4'],
+                'list5' => $lists['list5'],
+            ]);
+            // dd($sublist);
+        }
+        
+        return redirect()->route('detail', $goalid = $data['goalid'])->with('alert_success', "title : {$data['subgoal']} の編集を完了しました");
+    }
+
+    /**
+     * ゴール編集画面を表示する
+     * @param request
+     * @return view
+     */
+    public function editGoal (Request $request) 
+    {
+        $goalid = $request->only('goalid');
+        $goal_s = Goal::where('id', $goalid)->get();
+        $goal = $goal_s['0'];
+
+        $userid = $goal['userid'];
+        $goals = Goal::where('userid', $userid)->get();
+        // dd($goal);
+         return view('Edit.edit_goal',compact('goal','goals'));
+    }
+
+    /**
+     * ゴール編集機能
+     * @param request
+     * @return route
+     */
+    public function editGoalSubmit (Request $request)
+    {
+        $data = $request->only('tag', 'goal', 'memo', 'complete_date', 'goalid');
+        // dd($data);
+        $goal = Goal::where('id', $data['goalid'])->update([
+            'title' => $data['goal'],
+            'memo' => $data['memo'],
+            'complete_date' => $data['complete_date'],
+            'tag' => $data['tag'],
+        ]);
+
+        return redirect()->route('home')->with('alert_success', "title : {$data['goal']} を編集しました");
     }
 }

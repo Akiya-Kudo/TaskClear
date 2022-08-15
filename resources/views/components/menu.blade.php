@@ -1,11 +1,11 @@
 {{-- トップバー --}}
 <nav class="navbar navbar-light bg-light" >
-    <div>
-        <a class="navbar-brand ps-3 m-1" href="{{ route('login.show') }}">
-            <img class='mx-2' src="{{ asset('img/mailbox2.svg') }}" alt="#" width='30' height='30'>
-            <span class='h2 mx-2'>DeKi Router</span>
+    <div class='d-flex'>
+        <a class="navbar-brand ps-3 d-flex" href="{{ route('login.show') }}">
+            <img class='' src="{{ asset('img/mailbox2.svg') }}" alt="#" width='30' height='30'>
+            <span class='h2'>DeKi Router</span>
         </a>
-        <button class="btn btn-outline-success px-4 m-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">メニュー</button>
+        <button class="btn btn-sm btn-outline-success px-4 m-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">メニュー</button>
     </div>
 
     <div class="btn-group dropstart m-1">

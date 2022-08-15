@@ -34,7 +34,7 @@ class AuthController extends Controller
         {
             $request->session()->regenerate();
 
-            return redirect()->route('home')->with('login_success', 'ログインしました');
+            return redirect()->route('home')->with('alert_success', 'ログインしました');
         }
 
         return back()->withErrors([
@@ -82,7 +82,7 @@ class AuthController extends Controller
         {
             $request->session()->regenerate();
 
-            return redirect()->route('home')->with('register_success', '新規登録が完了しました');
+            return redirect()->route('home')->with('alert_success', '新規登録が完了しました');
         }
 
         return back()->withErrors([
