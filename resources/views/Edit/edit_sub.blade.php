@@ -39,17 +39,17 @@
                     <h5 class='text-success text-center'>編集 中間目標</h5>
                     {{-- サブゴール --}}
                     <div class='form-floating mt-3'>
-                        <input class='form-control' id='floatingInput' type="text"  name='subgoal' value="{{ $sub['title'] }}" required autofocus>
+                        <input class='form-control' id='floatingInput' type="text"  name='subgoal' value="{{ $sub['title'] }}" required autofocus max="250">
                         <label class='text-success fw-bolder' for="floatingInput">Your Sub Goal</label>
                     </div>
                     {{-- メモ --}}
                     <div class='form-floating mt-3'>
-                        <textarea class='form-control' id='floatingInput' name='memo' cols="20" rows="5">{{ $sub['memo'] }}</textarea>
+                        <textarea class='form-control' id='floatingInput' name='memo' cols="20" rows="5" max="200">{{ $sub['memo'] }}</textarea>
                         <label class='text-success fw-bolder' for="floatingInput">Memo</label>
                     </div>
                     {{-- タイムリミット --}}
                     <div class='form-floating mt-3'>
-                        <input class='form-control' id='floatingInput' type="date" name='complete_date' value="{{ $sub['complete_date'] }}" required>
+                        <input class='form-control' id='floatingInput' type="date" name='complete_date' value="{{ $sub['complete_date'] }}" required date>
                         <label class='text-success fw-bolder' for="floatingInput">Limit</label>
                     </div>
                 </div>
@@ -59,35 +59,35 @@
                     <h5 class='text-success text-center'>編集 To Do List</h5>
                     {{-- To Do list 1 --}}
                     <div class='form-floating mt-3'>
-                        <input class='form-control' id='floatingInput' type="text"  name='list1' value="{{ $list['list1'] }}">
+                        <input class='form-control' id='floatingInput' type="text"  name='list1' value="{{ $list['list1'] }}" max="100">
                         <label class='text-success fw-bolder' for="floatingInput">List 1</label>
                     </div>
                     {{-- To Do list 2 --}}
                     <div class='form-floating mt-3'>
-                        <input class='form-control' id='floatingInput' type="text" name='list2' value="{{ $list['list2'] }}">
+                        <input class='form-control' id='floatingInput' type="text" name='list2' value="{{ $list['list2'] }}" max="100">
                         <label class='text-success fw-bolder' for="floatingInput">List 2</label>
                     </div>
                     {{-- To Do list 3 --}}
                     <div class='form-floating mt-3'>
-                        <input class='form-control' id='floatingInput' type="text" name='list3' value="{{ $list['list3'] }}">
+                        <input class='form-control' id='floatingInput' type="text" name='list3' value="{{ $list['list3'] }}" max="100">
                         <label class='text-success fw-bolder' for="floatingInput">List 3</label>
                     </div>
                     {{-- To Do list 4 --}}
                     <div class='form-floating mt-3'>
-                        <input class='form-control' id='floatingInput' type="text" name='list4' value="{{ $list['list4'] }}">
+                        <input class='form-control' id='floatingInput' type="text" name='list4' value="{{ $list['list4'] }}" max="100">
                         <label class='text-success fw-bolder' for="floatingInput">List 4</label>
                     </div>
                     {{-- To Do list ５ --}}
                     <div class='form-floating mt-3'>
-                        <input class='form-control' id='floatingInput' type="text" name='list5' value="{{ $list['list5'] }}">
+                        <input class='form-control' id='floatingInput' type="text" name='list5' value="{{ $list['list5'] }}" max="100">
                         <label class='text-success fw-bolder' for="floatingInput">List 5</label>
                     </div>
 
                 </div>
             </div>
 
-            <input type="hidden" value="{{ $cer_goal['id'] }}" name='goalid'>
-            <input type="hidden" value="{{ $sub['id'] }}" name='subgoalid'>
+            <input type="hidden" value="{{ $cer_goal['id'] }}" name='goalid' required number>
+            <input type="hidden" value="{{ $sub['id'] }}" name='subgoalid' required number>
             <button type="submit" class="btn btn-outline-success btn-lg w-100 mt-4" >登録する</button>
 
         </form>

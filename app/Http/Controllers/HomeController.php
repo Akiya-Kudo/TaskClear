@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\SelfController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Goal;
@@ -12,6 +13,7 @@ use App\Models\Sublist;
 class HomeController extends Controller
 {
     /**
+     * home画面を表示
      * @return view
      */
     public function home (Request $request)
@@ -19,14 +21,24 @@ class HomeController extends Controller
         $user = Auth::user()->only('username','id');
         $username = $user['username'];
         $userid = $user['id'];
-
-        $goals = Goal::where('userid', $userid)->get();
         
-        return view('home', compact('goals'));
+        $goals = Goal::where('userid', $userid)->get();
+        // ゴール達成済みの場合colorをsecondary表示
+        $comps = [];
+        foreach ($goals as $goal) {
+            if ($goal['complete'] === 1) {
+                $comps[$goal['id']] = 'secondary';
+            } else {
+                $comps[$goal['id']] = 'success';
+            }
+        }
+        // dd($comps);
+        
+        return view('home', compact('goals', 'comps'));
     }
 
     /**
-     * goalの詳細画面を表示させる
+     * 詳細画面を表示させる
      * @return view
      */
     public function detail ($goalid)
@@ -57,13 +69,39 @@ class HomeController extends Controller
         // completeカラムをsubgoalsごとに取得
         $completes = [];
         $keys_complete = ['complete1', 'complete2', 'complete3', 'complete4', 'complete5'];
+        // 元データからcompleteを区別してスタイル文を作成し収納
         foreach($uls_all as $ul_all) {
             foreach($keys_complete as $key) { $cer_complete[$key] = $ul_all[$key]; }
-            $completes[$ul_all['subgoalid']] = $cer_complete;
+            $i = 1;
+            foreach ($cer_complete as $c) {
+                if ($c === 1) {
+                    $array['color'] = 'secondary';
+                    $array['style'] = 'text-decoration-line-through';
+                } else {
+                    $array['color'] = 'success';
+                    $array['style'] = 'text-decoration-none';
+                }
+                // array_push($list_or, $array);
+                $styles["complete$i"] = $array;
+                // $styles[] = $array;
+                $i++;
+            }
+            $completes[$ul_all['subgoalid']] = $styles;
         }
 
-        // dd($lists, $completes);
+        //サブゴール達成済みの時のスタイル変換
+        $check_subgoal_comp = [];
+        if (isset($subs)) {
+            foreach ($subs as $sub) {
+                if ($sub['complete'] === 1) {
+                    $check_subgoal_comp[$sub['id']] = 'secondary';
+                } else {
+                    $check_subgoal_comp[$sub['id']] = 'success';
+                }
+            }
+        }
+        $sub_colors = $check_subgoal_comp;
 
-        return view('detail', compact('goals', 'cer_goal', 'subs', 'lists', 'completes'));
+        return view('detail', compact('goals', 'cer_goal', 'subs', 'lists', 'completes', 'sub_colors'));
     }
 }

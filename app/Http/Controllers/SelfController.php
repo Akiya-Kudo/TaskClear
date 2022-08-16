@@ -2,7 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\SelfController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Goal;
+use App\Models\Subgoal;
+use App\Models\Sublist;
 
 class SelfController extends Controller
 {
@@ -21,4 +27,5 @@ class SelfController extends Controller
         }
         return $a;
     }
+
 }

@@ -2,7 +2,8 @@
     width: 150px;
 }
 
-.hov-func {
+/* 未達成ゴール */
+.hov-func-success {
     overflow: hidden;
     transition-duration: 0.5s; 
     
@@ -12,7 +13,7 @@
   transition-duration: 0.5s;
 }
 
-.hov-func:before {
+.hov-func-success:before {
     content: '';
     position: absolute;
     top: 0;
@@ -35,12 +36,43 @@
     transform:scale(1.05,1.05);
   }
   
-.hov-func:hover:before {
+.hov-func-success:hover:before {
     transition: .6s;
     transform: scale(10);
   }
 
 
+  /* 達成済みゴール */
+
+  .hov-func-secondary {
+    overflow: hidden;
+    transition-duration: 0.5s; 
+    
+}
+
+.hov-func-secondary:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    width: 100px;
+    height: 100px;
+    background-color: #989999;
+    border-radius: 50%;
+    z-index: -1;
+    transform: scale(0);
+    transition: .3s;
+  }
+  
+.hov-func-secondary:hover:before {
+    transition: .6s;
+    transform: scale(10);
+  }
+
+  /* flex調整 */
 @media screen and (min-width:480px) { 
   /*　画面サイズが480pxからはここを読み込む　*/
   p {margin: 5px 110px;}
@@ -54,6 +86,8 @@
   .form-a {min-width: 15rem;}
 }
 
+
+/* ボタンスタイル */
 .d-url {
   color: #df3c3c;
 }

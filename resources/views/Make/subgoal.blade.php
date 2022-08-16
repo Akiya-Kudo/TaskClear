@@ -28,7 +28,14 @@
                 <div class='rightcontent m-2 fs-5'>Limit : {{ $cer_goal['complete_date'] }}</div>
             </div>
         </div>
-
+        @error('subgoal') <p class='text-danger text-center'>{{$message}}</p> @enderror
+        @error('list1') <p class='text-danger text-center'>{{$message}}</p> @enderror
+        @error('list2') <p class='text-danger text-center'>{{$message}}</p> @enderror
+        @error('list3') <p class='text-danger text-center'>{{$message}}</p> @enderror
+        @error('list4') <p class='text-danger text-center'>{{$message}}</p> @enderror
+        @error('list5') <p class='text-danger text-center'>{{$message}}</p> @enderror
+        @error('memo') <p class='text-danger text-center'>{{$message}}</p> @enderror
+        @error('complete_date') <p class='text-danger text-center'>{{$message}}</p> @enderror
         <hr class="text-success">
 
         {{-- 入力フォーム --}}

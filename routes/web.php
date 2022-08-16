@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\EditController;
+use App\Http\Controllers\DoneController;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,4 +62,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('editgoal', [EditController::class, 'editGoal'])->name('goal.edit');
     //ゴール編集機能
     Route::post('/editgoal/submit', [EditController::class, 'editGoalSubmit'])->name('goal.edit.submit');
+
+    // リスト達成記録機能
+    Route::post('donelist', [DoneController::class, 'doneList'])->name('list.done');
+    // ゴール達成記録機能
+    Route::post('donegoal', [DoneController::class, 'doneGoal'])->name('goal.done');
 });

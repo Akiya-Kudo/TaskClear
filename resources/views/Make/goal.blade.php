@@ -20,6 +20,10 @@
 
             {{-- タイトル --}}
             <h1 class='h2 text-center text-success fw-bolder'>What is your Goal</h1>
+            @error('goal') <p class='text-danger text-center'>{{$message}}</p> @enderror
+            @error('tag') <p class='text-danger text-center'>{{$message}}</p> @enderror
+            @error('memo') <p class='text-danger text-center'>{{$message}}</p> @enderror
+            @error('complete_date') <p class='text-danger text-center'>{{$message}}</p> @enderror
             <hr class="text-success">
 
             {{-- ゴール --}}

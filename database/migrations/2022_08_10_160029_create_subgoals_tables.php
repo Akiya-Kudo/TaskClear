@@ -17,7 +17,7 @@ class CreateSubgoalsTables extends Migration
             $table->id();
             $table->bigInteger('userid');
             $table->bigInteger('goalid');
-            $table->integer('subnumber')->unsigned();
+            $table->integer('subnumber')->nullable();
             $table->string('title');
             $table->text('memo')->nullable();
             $table->tinyInteger('complete')->default(0);
