@@ -28,23 +28,143 @@
     z-index: -1;
     transform: scale(0);
     transition: .3s;
-  }
+}
 
 .hov-size:hover {
     transition: .3s;
     transition-duration: 0.5s; 
     transform:scale(1.05,1.05);
-  }
+}
   
 .hov-func-success:hover:before {
     transition: .6s;
     transform: scale(10);
-  }
+}
+
+/* danger */
+
+.hov-func-danger {
+  overflow: hidden;
+  transition-duration: 0.5s; 
+  
+}
+
+.hov-func-danger:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  width: 100px;
+  height: 100px;
+  background-color: #e0bcbc;
+  border-radius: 50%;
+  z-index: -1;
+  transform: scale(0);
+  transition: .3s;
+}
+
+.hov-func-danger:hover:before {
+  transition: .6s;
+  transform: scale(10);
+}
+
+/* info */
+
+.hov-func-info {
+  overflow: hidden;
+  transition-duration: 0.5s; 
+  
+}
+
+.hov-func-info:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  width: 100px;
+  height: 100px;
+  background-color: #fad7d7;
+  border-radius: 50%;
+  z-index: -1;
+  transform: scale(0);
+  transition: .3s;
+}
+
+.hov-func-info:hover:before {
+  transition: .6s;
+  transform: scale(10);
+}
+
+/* warning */
+
+.hov-func-warning {
+  overflow: hidden;
+  transition-duration: 0.5s; 
+  
+}
+
+.hov-func-warning:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  width: 100px;
+  height: 100px;
+  background-color: #fae6ad;
+  border-radius: 50%;
+  z-index: -1;
+  transform: scale(0);
+  transition: .3s;
+}
+
+.hov-func-warning:hover:before {
+  transition: .6s;
+  transform: scale(10);
+}
+
+/* primary */
+
+.hov-func-primary {
+  overflow: hidden;
+  transition-duration: 0.5s; 
+  
+}
+
+.hov-func-primary:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  width: 100px;
+  height: 100px;
+  background-color: #b6c8de;
+  border-radius: 50%;
+  z-index: -1;
+  transform: scale(0);
+  transition: .3s;
+}
+
+.hov-func-primary:hover:before {
+  transition: .6s;
+  transform: scale(10);
+}
 
 
-  /* 達成済みゴール */
+/* 達成済みゴール */
 
-  .hov-func-secondary {
+.hov-func-secondary {
     overflow: hidden;
     transition-duration: 0.5s; 
     
@@ -65,12 +185,14 @@
     z-index: -1;
     transform: scale(0);
     transition: .3s;
-  }
+}
   
 .hov-func-secondary:hover:before {
     transition: .6s;
     transform: scale(10);
-  }
+}
+
+
 
   /* flex調整 */
 @media screen and (min-width:480px) { 

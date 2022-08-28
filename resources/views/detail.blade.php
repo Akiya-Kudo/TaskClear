@@ -18,11 +18,11 @@
         {{-- タイトル --}}
         <div class='goal bg-{{ $cer_goal['color'] }} bg-opacity-75 shadow  border-{{ $cer_goal['color'] }} rounded-4 m-3 p-3 d-flex flex-column justify-content-evenly align-items-center'>
             <div class='leftcontent my-2 min-m-item'>
-                <div>{{ $cer_goal['tag'] }}</div>
-                <h1>{{ $cer_goal['title'] }}</h1>
+                <div class="text-light">{{ $cer_goal['tag'] }}</div>
+                <h1 class="text-light">{{ $cer_goal['title'] }}</h1>
             </div>
-            <p class='middlecontent m-2 fs-5'>memo : {{ $cer_goal['memo'] }}</p>
-            <div class='rightcontent m-2 fs-5'>Limit : {{ $cer_goal['complete_date'] }}</div>
+            <p class='middlecontent m-2 fs-5 text-light'>memo : {{ $cer_goal['memo'] }}</p>
+            <div class='rightcontent m-2 fs-5 text-light'>Limit : {{ $cer_goal['complete_date'] }}</div>
         </div>
 
         {{-- 作成時のアラートメッセージ --}}
