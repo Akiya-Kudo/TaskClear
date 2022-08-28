@@ -8,7 +8,7 @@
         <button class="btn btn-sm btn-outline-success px-4 m-1" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">メニュー</button>
     </div>
 
-    <div class="btn-group dropstart m-1">
+    <div class="btn-group dropdown m-1">
         <button class="btn btn-outline-success px-4 me-5 dropdown-toggle" type="button" id="dropdownMenuClickableOutside" 
         data-bs-toggle="dropdown" data-bs-auto-close="inside" aria-expanded="false" style="width: 106px; height: 36px;" data-bs-offset="5,5">
             {{ $username = Auth::user()->username }}
