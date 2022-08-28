@@ -42,7 +42,16 @@
                 <input class='form-control' id='floatingInput' type="date" name='complete_date' value="{{ $goal['complete_date'] }}" required>
                 <label class='text-success fw-bolder' for="floatingPassword">Limit</label>
             </div>
-
+            {{-- color選択 --}}
+            <select class="form-select form-select-sm mt-3" id='color' name='color' aria-label=".form-select-sm example" required>
+                <option class="text-success" value="">select the Color</option>
+                <option class="" value="success">Green</option>
+                <option class="" value="danger">Wine Red</option>
+                <option class="" value="primary">Sky Blue</option>
+                <option class="" value="warning">Cheese</option>
+                <option class="" value="info">Peach</option>
+            </select>
+        
             {{-- Today日付 --}}
             <div class='pt-3'>
                 <input type="hidden" value="{{ $goal['id'] }}" name='goalid'>
@@ -52,5 +61,24 @@
 
         </form>
     </main>
+    <script>
+        const color = '{{ $goal['color'] }}';
+
+        if (color === 'success') {
+            colorNumber = 1;
+        } else if (color === 'danger') {
+            colorNumber = 2;
+        } else if (color === 'primary') {
+            colorNumber = 3;
+        } else if (color === 'warning') {
+            colorNumber = 4;
+        } else if (color === 'info') {
+            colorNumber = 5;
+        }
+
+        window.onload = function() {
+            document.getElementById('color').options[colorNumber].selected = true;
+        }
+    </script>
 </body>
 @endsection

@@ -46,6 +46,15 @@
                 <input class='form-control' id='floatingInput' type="date" name='complete_date' required>
                 <label class='text-success fw-bolder' for="floatingPassword">Limit</label>
             </div>
+            {{-- color選択 --}}
+            <select class="form-select form-select-sm mt-3" id='color' name='color' aria-label=".form-select-sm example" required>
+                <option class="text-success" value="">select the Color</option>
+                <option class="" value="success">Green</option>
+                <option class="" value="danger">Wine Red</option>
+                <option class="" value="primary">Sky Blue</option>
+                <option class="" value="warning">Cheese</option>
+                <option class="" value="info">Peach</option>
+            </select>
 
             {{-- Today日付 --}}
             <div class='pt-3'>

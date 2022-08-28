@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddGoalidToListsTable extends Migration
+class AddColorToGoalsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class AddGoalidToListsTable extends Migration
      */
     public function up()
     {
-        Schema::table('lists', function (Blueprint $table) {
-            $table->bigInteger('goalid');
+        Schema::table('goals', function (Blueprint $table) {
+            $table->string('color')->default('success');
         });
     }
 
@@ -25,8 +25,8 @@ class AddGoalidToListsTable extends Migration
      */
     public function down()
     {
-        Schema::table('lists', function (Blueprint $table) {
-            $table->dropColumn('goalid');
+        Schema::table('goals', function (Blueprint $table) {
+            $table->dropColumn('color');
         });
     }
 }

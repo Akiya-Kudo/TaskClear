@@ -29,7 +29,7 @@ class HomeController extends Controller
             if ($goal['complete'] === 1) {
                 $comps[$goal['id']] = 'secondary';
             } else {
-                $comps[$goal['id']] = 'success';
+                $comps[$goal['id']] = $goal['color'];
             }
         }
         // dd($comps);
@@ -78,7 +78,7 @@ class HomeController extends Controller
                     $array['color'] = 'secondary';
                     $array['style'] = 'text-decoration-line-through';
                 } else {
-                    $array['color'] = 'success';
+                    $array['color'] = $cer_goal['color'];
                     $array['style'] = 'text-decoration-none';
                 }
                 // array_push($list_or, $array);
@@ -96,7 +96,7 @@ class HomeController extends Controller
                 if ($sub['complete'] === 1) {
                     $check_subgoal_comp[$sub['id']] = 'secondary';
                 } else {
-                    $check_subgoal_comp[$sub['id']] = 'success';
+                    $check_subgoal_comp[$sub['id']] = $cer_goal['color'];
                 }
             }
         }

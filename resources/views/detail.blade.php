@@ -16,7 +16,7 @@
     {{-- メインコンテンツ --}}
     <div class="d-flex flex-column ">
         {{-- タイトル --}}
-        <div class='goal bg-success bg-opacity-75 shadow  border-success rounded-4 m-3 p-3 d-flex flex-column justify-content-evenly align-items-center'>
+        <div class='goal bg-{{ $cer_goal['color'] }} bg-opacity-75 shadow  border-{{ $cer_goal['color'] }} rounded-4 m-3 p-3 d-flex flex-column justify-content-evenly align-items-center'>
             <div class='leftcontent my-2 min-m-item'>
                 <div>{{ $cer_goal['tag'] }}</div>
                 <h1>{{ $cer_goal['title'] }}</h1>
@@ -93,7 +93,7 @@
                         <form action="/editsubgoal" method='POST'>
                             @csrf
                             <input type="hidden" value='{{ $sub['id'] }}' name='subgoalid'>
-                            <button type='submit' class="btn btn-outline-primary mx-1">Edit</button>
+                            <button type='submit' class="btn btn-outline-dark mx-1">Edit</button>
                         </form>
                         {{-- delete Button --}}
                         <form action="/deletesubgoal" method='POST'>
@@ -101,7 +101,7 @@
                             <input type="hidden" value='{{ $sub['id'] }}' name='subgoalid'>
                             <input type="hidden" value='{{ $sub['title'] }}' name='title'>
                             <input type="hidden" value='{{ $cer_goal['id'] }}' name='goalid'>
-                            <button type='submit' class="btn btn-outline-danger mx-2">×</button>
+                            <button type='submit' class="btn btn-outline-light mx-2">×</button>
                         </form>
                         {{-- <button type="button" class="btn btn-outline-danger mx-2" onclick="location.href='/deletesubgoal'">×</button> --}}
                         {{-- Upload Button --}}
@@ -112,8 +112,8 @@
             @endforeach
 
             {{-- 新規作成ボタン --}}
-            <div class='card hov-func hov-size border-success m-3 d-flex align-items-center' style='max-width: 12rem;max-height: 4rem;'>
-                <a href="/makesubgoal/{{ $cer_goal['id'] }}" class='link-success text-decoration-none d-flex flex-column'><div class='card-body'>新しい中間目標を立てる</div></a>
+            <div class='card hov-func hov-size border-{{ $cer_goal['color'] }} m-3 d-flex align-items-center' style='max-width: 12rem;max-height: 4rem;'>
+                <a href="/makesubgoal/{{ $cer_goal['id'] }}" class='link-{{ $cer_goal['color'] }} text-decoration-none d-flex flex-column'><div class='card-body'>新しい中間目標を立てる</div></a>
             </div>
         </div>
     </div>

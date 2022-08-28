@@ -43,13 +43,13 @@
                             <form action="/editgoal" method='POST'>
                                 @csrf
                                 <input type="hidden" value='{{ $goal['id'] }}' name='goalid'>
-                                <button type='submit' class="btn btn-outline-primary ms-3 mx-1">Edit</button>
+                                <button type='submit' class="btn btn-outline-dark ms-3 mx-1">Edit</button>
                             </form>
                             <form action="/deletegoal" method='POST'>
                                 @csrf
                                 <input type="hidden" value='{{$goal['id']}}' name='goalid'>
                                 <input type="hidden" value='{{$goal['title']}}' name='title'>
-                                <button type='submit' class="btn btn-outline-danger mx-1">×</button>
+                                <button type='submit' class="btn btn-outline-light mx-1">×</button>
                             </form>
                             <form action="/donegoal" method='POST'>
                                 @csrf

@@ -37,13 +37,14 @@ class EditController extends Controller
     public function makeGoal (GoalMakeFormRequest $request)
     {
         //DB保存
-        $data = $request->only('goal', 'memo', 'complete_date', 'tag');
+        $data = $request->only('goal', 'memo', 'complete_date', 'tag', 'color');
         $goal = Goal::create([
             'userid' => Auth::user()->id,
             'title' => $data['goal'],
             'memo' => $data['memo'],
             'complete_date' => $data['complete_date'],
             'tag' => $data['tag'],
+            'color' => $data['color'],
         ]);
         $goalid = $goal->id;
 
@@ -334,6 +335,7 @@ class EditController extends Controller
         $goal_s = Goal::where('id', $goalid)->get();
         $goal = $goal_s['0'];
 
+        // メニュー表示
         $userid = $goal['userid'];
         $goals = Goal::where('userid', $userid)->get();
         // dd($goal);
@@ -347,7 +349,8 @@ class EditController extends Controller
      */
     public function editGoalSubmit (Request $request)
     {
-        $data = $request->only('tag', 'goal', 'memo', 'complete_date', 'goalid');
+        $data = $request->only('tag', 'goal', 'memo', 'complete_date', 'goalid', 'color');
+        // dd($data);
 
         \DB::beginTransaction();
         try 
@@ -357,6 +360,7 @@ class EditController extends Controller
                 'memo' => $data['memo'],
                 'complete_date' => $data['complete_date'],
                 'tag' => $data['tag'],
+                'color' => $data['color'],
             ]);
             \DB::commit();
         } catch(Throwable $e) 

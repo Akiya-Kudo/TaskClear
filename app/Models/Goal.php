@@ -21,5 +21,6 @@ class Goal extends Model
         'complete',
         'complete_date',
         'tag',
+        'color',
     ];
 }
