@@ -36,12 +36,12 @@
             <h1 class='h3'>L o g i n</h1>
 
             <div class='form-floating'>
-                <input value='a@a' class='form-control' id='floatingInput' type="email" placeholder='メールアドレスを記入して下さい' name='email' required autofocus>
+                <input class='form-control' id='floatingInput' type="email" placeholder='メールアドレスを記入して下さい' name='email' required autofocus>
                 <label class='text-black-50' for="floatingInput">メールアドレス</label>
             </div>
 
             <div class='form-floating'>
-                <input value='aaaaaaaa' class='form-control' id='floatingPassword' type="password" placeholder='パスワードを記入して下さい' name='password' required>
+                <input class='form-control' id='floatingPassword' type="password" placeholder='パスワードを記入して下さい' name='password' required>
                 <label class='text-black-50' for="floatingPassword">パスワード</label>
             </div>
 
