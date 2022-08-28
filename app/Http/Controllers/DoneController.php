@@ -21,7 +21,6 @@ class DoneController extends Controller
      */
     public function doneList (Request $request)
     {
-        ////////////////////////////////////////////////////////////////////////////////トランザクションを後で作成
         // dd($request);
         $subgoalid = $request->only('subgoalid');
         // checkされた項目を取得

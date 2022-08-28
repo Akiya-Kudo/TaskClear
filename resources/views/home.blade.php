@@ -25,7 +25,7 @@
         <div class='d-flex flex-wrap mt-3 justify-content-center'>
 
             @foreach($goals as $goal)
-            <div class="card hov-func-{{ $comps[$goal['id']] }} hov-size border-{{ $comps[$goal['id']] }} m-3 bg-light shadow" style="max-width: 25rem;">
+            <div class="card hov-func-{{ $comps[$goal['id']] }} hov-size border-{{ $comps[$goal['id']] }} m-4 bg-light shadow" style="max-width: 25rem;">
                 <a class='link-{{ $comps[$goal['id']] }} text-decoration-none' href="/home/{{$goal['id']}}">
                     <div class="card-header bg-transparent border-{{ $comps[$goal['id']] }}">{{ $goal['tag'] }}</div>
                     <div class="card-body text-{{ $comps[$goal['id']] }}">
@@ -63,7 +63,7 @@
             </div>
             @endforeach
 
-            <div class='card hov-func hov-size border-success m-3 d-flex align-items-center' style='max-width: 12rem;max-height: 4rem;'>
+            <div class='card hov-func-success hov-size border-success m-3 d-flex align-items-center' style='max-width: 12rem;max-height: 4rem;'>
                 <a href="/makegoal" class='link-success text-decoration-none d-flex flex-column'><div class='card-body'>新しい目標を立てる</div></a>
             </div>
         </div>

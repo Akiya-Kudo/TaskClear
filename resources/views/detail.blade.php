@@ -37,14 +37,14 @@
                 {{-- ナンバー --}}
                 <div class="card-header bg-{{ $sub_colors[$sub['id']] }} bg-opacity-50 text-light border-{{ $sub_colors[$sub['id']] }} fw-bolder text-center">{{ $loop->iteration }}</div>
                 {{-- コンテンツ内容 --}}
-                <div class='d-flex'>
+                <div class='d-flex flex-wrap justify-content-center'>
                     {{-- サブゴール名・メモ --}}
-                    <div class="card-body text-{{ $sub_colors[$sub['id']] }}" style="max-width: 15rem;">
+                    <div class="card-body text-{{ $sub_colors[$sub['id']] }} text-center" style="max-width: 15rem;">
                         <h5 class="card-title">{{ $sub['title'] }}</h5>
-                        <p class="card-text"  style='margin: 5px;'>memo : {{ $sub['memo'] }}</p>
+                        <p class="card-text text-start"  style='margin: 5px;'>memo : {{ $sub['memo'] }}</p>
                     </div>
                     {{-- リスト --}}
-                    <div class='m-2'>
+                    <div class='m-2' style="max-width: 13.5rem;">
                         <div class='text-{{ $sub_colors[$sub['id']] }} mx-3'>to do list : </div>
                         {{-- リストが存在する場合のみ --}}
                         @isset($lists[$sub['id']])
@@ -85,7 +85,7 @@
                     </div>                 
                 </div>
                 {{-- リミット表示 --}}
-                <div class="card-footer bg-transparent border-{{ $sub_colors[$sub['id']] }} text-{{ $sub_colors[$sub['id']] }} d-flex justify-content-between">
+                <div class="card-footer bg-transparent border-{{ $sub_colors[$sub['id']] }} text-{{ $sub_colors[$sub['id']] }} d-flex justify-content-between flex-wrap">
                     <div class='text-nowrap'>limit : {{ $sub['complete_date'] }}</div>
                     {{-- Buttons --}}
                     <div class='d-flex'>

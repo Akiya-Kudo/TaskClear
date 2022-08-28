@@ -6,6 +6,10 @@
 <link rel="stylesheet" href="{{ asset('css/home.css') }}">
 @endsection
 
+@section('script')
+<script src="{{ asset('js/form.js') }}" defer></script> 
+@endsection
+
 @section('content')
 <body class='bg-dark bg-opacity-10'>
 
@@ -56,31 +60,36 @@
 
                 {{-- リスト入力 --}}
                 <div class='form-a flex-fill my-2 mx-5 d-flex flex-column flex-wrap'>
-                    <h5 class='text-success text-center'>編集 To Do List</h5>
+                    <h5 class='text-success text-center mx-3'>編集 To Do List</h5>
                     {{-- To Do list 1 --}}
-                    <div class='form-floating mt-3'>
-                        <input class='form-control' id='floatingInput' type="text"  name='list1' value="{{ $list['list1'] }}" max="100">
+                    <div class='form-floating mt-3 d-flex'>
+                        <input class='form-control' id='txt1' id='floatingInput' type="text"  name='list1' value="{{ $list['list1'] }}" max="100">
                         <label class='text-success fw-bolder' for="floatingInput">List 1</label>
+                        <input id="btn1" class='btn btn-outline-success ms-2' style='width:80px;' type="button " value="Remove" />
                     </div>
                     {{-- To Do list 2 --}}
-                    <div class='form-floating mt-3'>
-                        <input class='form-control' id='floatingInput' type="text" name='list2' value="{{ $list['list2'] }}" max="100">
+                    <div class='form-floating mt-3 d-flex'>
+                        <input class='form-control'  id='txt2' id='floatingInput' type="text" name='list2' value="{{ $list['list2'] }}" max="100">
                         <label class='text-success fw-bolder' for="floatingInput">List 2</label>
+                        <input id="btn2" class='btn btn-outline-success ms-2' style='width:80px;' type="button " value="Remove" />
                     </div>
                     {{-- To Do list 3 --}}
-                    <div class='form-floating mt-3'>
-                        <input class='form-control' id='floatingInput' type="text" name='list3' value="{{ $list['list3'] }}" max="100">
+                    <div class='form-floating mt-3 d-flex'>
+                        <input class='form-control'  id='txt3' id='floatingInput' type="text" name='list3' value="{{ $list['list3'] }}" max="100">
                         <label class='text-success fw-bolder' for="floatingInput">List 3</label>
+                        <input id="btn3" class='btn btn-outline-success ms-2' style='width:80px;' type="button " value="Remove" />
                     </div>
                     {{-- To Do list 4 --}}
-                    <div class='form-floating mt-3'>
-                        <input class='form-control' id='floatingInput' type="text" name='list4' value="{{ $list['list4'] }}" max="100">
+                    <div class='form-floating mt-3 d-flex'>
+                        <input class='form-control'  id='txt4' id='floatingInput' type="text" name='list4' value="{{ $list['list4'] }}" max="100">
                         <label class='text-success fw-bolder' for="floatingInput">List 4</label>
+                        <input id="btn4" class='btn btn-outline-success ms-2' style='width:80px;' type="button " value="Remove" />
                     </div>
                     {{-- To Do list ５ --}}
-                    <div class='form-floating mt-3'>
-                        <input class='form-control' id='floatingInput' type="text" name='list5' value="{{ $list['list5'] }}" max="100">
+                    <div class='form-floating mt-3 d-flex'>
+                        <input class='form-control'  id='txt5' id='floatingInput' type="text" name='list5' value="{{ $list['list5'] }}" max="100">
                         <label class='text-success fw-bolder' for="floatingInput">List 5</label>
+                        <input id="btn5" class='btn btn-outline-success ms-2' style='width:80px;' type="button " value="Remove" />
                     </div>
 
                 </div>

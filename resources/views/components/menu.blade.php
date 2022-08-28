@@ -1,6 +1,6 @@
 {{-- トップバー --}}
 <nav class="navbar navbar-light bg-light" >
-    <div class='d-flex'>
+    <div class='d-flex flex-wrap'>
         <a class="navbar-brand ps-3 d-flex" href="{{ route('login.show') }}">
             <img class='' src="{{ asset('img/mailbox2.svg') }}" alt="#" width='30' height='30'>
             <span class='h2'>DeKi Router</span>
@@ -14,14 +14,19 @@
             {{ $username = Auth::user()->username }}
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuClickableOutside">
-        <li><a class="dropdown-item" href="#">Plofile</a></li>
-        <li><a class="dropdown-item" href="/home">Home</a></li>
-        <li>
-            <form name="sample_form_name" method="POST" action="/logout">
-            @csrf
-                <a class="dropdown-item" href="javascript:sample_form_name.submit()">Log out</a>
-            </form>
-        </li>
+            <li><a class="dropdown-item" href="/home">Home</a></li>
+            <li>
+                <form name="sample_form_name" method="POST" action="/logout">
+                    @csrf
+                    <a class="dropdown-item" href="javascript:sample_form_name.submit()">Log out</a>
+                </form>
+            </li>
+            <li>
+                <form name=" delete_form" method="POST" action="/deleteaccount" onsubmit="return alertDelete()">
+                    @csrf
+                    <input class="dropdown-item" type="submit" value="Delete Account">
+                </form>
+            </li>
         </ul>
     </div>
 </nav>
@@ -41,3 +46,16 @@
         </div>
     </div>
 </div>
+
+<script>
+    function alertDelete () {
+        const result = window.confirm("アカウントを削除すると全ての記録を戻すことができなくなります。本当に削除してよろしいですか？");
+        
+        if (result) {
+            document.delete_form.submit();
+        } else {
+            return false;
+        }
+
+    }
+</script>
