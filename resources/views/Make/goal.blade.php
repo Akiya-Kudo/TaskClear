@@ -51,7 +51,7 @@
                 <option class="text-success" value="">select the Color</option>
                 <option class="" value="success">Green</option>
                 <option class="" value="danger">Wine Red</option>
-                <option class="" value="primary">Sky Blue</option>
+                <option class="" value="primary">Ocean Blue</option>
                 <option class="" value="warning">Cheese</option>
                 <option class="" value="info">Peach</option>
             </select>
