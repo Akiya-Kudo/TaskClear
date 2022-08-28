@@ -10,7 +10,7 @@
 
     <div class="btn-group dropdown m-1">
         <button class="btn btn-outline-success px-4 me-5 dropdown-toggle" type="button" id="dropdownMenuClickableOutside" 
-        data-bs-toggle="dropdown" data-bs-auto-close="inside" aria-expanded="false" style="width: 106px; height: 36px;" data-bs-offset="5,5">
+        data-bs-toggle="dropdown" data-bs-auto-close="inside" aria-expanded="false"  data-bs-offset="5,5">
             {{ $username = Auth::user()->username }}
         </button>
         <ul class="dropdown-menu" aria-labelledby="dropdownMenuClickableOutside">
