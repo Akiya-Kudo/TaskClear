@@ -28,6 +28,7 @@
 
     {{-- ログアウトセッションメッセージ --}}
     <x-alert type='success' :session="session('logout_success')"/>
+    <x-alert type='success' :session="session('sample_user')"/>
 
     {{-- 入力フォーム --}}
     <main class='form-signin'>

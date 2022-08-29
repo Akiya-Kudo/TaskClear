@@ -20,6 +20,7 @@ class AuthController extends Controller
      */
     public function showLogin () 
     {
+        \Session::flash('sample_user', "サンプルユーザとしてログインする場合   email : sample@sample.com       パスワード : sample00  でログインをお願いします");
         return view('Auth.login_form');
     }
 
