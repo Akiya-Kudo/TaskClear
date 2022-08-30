@@ -3,8 +3,6 @@
 
 <image src="public/img/GekiRouterImage.png" width="600px">
 
-![giphy](https://user-images.githubusercontent.com/75403424/144709610-eb8abdaf-b1b6-45ec-aaee-32f8717b60a2.gif)
-
 ## アプリの URL &#x2728;
 
 https://enigmatic-sierra-06702.herokuapp.com/
